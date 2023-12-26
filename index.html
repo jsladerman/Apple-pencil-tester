@@ -3,47 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <title>Apple Pencil Tester App</title>
-    <style>
-      /* Add some basic styling to the canvas */
-      #drawing-canvas {
-        border: 1px solid black;
-        touch-action: none; /* Prevent default touch actions like scrolling */
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <canvas id="drawing-canvas" width="500" height="500"></canvas>
-    <h1>Touch Properties:</h1>
-    <pre id="touch-properties"></pre>
-    <script>
-      const canvas = document.getElementById("drawing-canvas");
-      const ctx = canvas.getContext("2d");
-      const touchProperties = document.getElementById("touch-properties");
-
-      function handleTouchStart(event) {
-        // Prevent default touch behavior like scrolling
-        event.preventDefault();
-
-        // Get the touch object for the Apple Pencil or stylus
-        const touch = event.touches[0];
-
-        // Calculate the touch position relative to the canvas
-        const rect = canvas.getBoundingClientRect();
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
-
-        // Draw a dot at the touch position
-        ctx.beginPath();
-        ctx.arc(x, y, 5, 0, 2 * Math.PI); // 5 is the radius of the dot
-        ctx.fill();
-
-        // Display the touch properties as a string
-        const vals = Object.getOwnPropertyNames(touch);
-        touchProperties.innerHTML = vals;
-        
-      }
-      // Add the touchstart event listener to the canvas
-      canvas.addEventListener("touchstart", handleTouchStart);
-    </script>
+    <canvas id="drawing-canvas"></canvas>
+    <div>
+      <h1>Touch Properties:</h1>
+      <pre id="touch-properties"></pre>
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>
